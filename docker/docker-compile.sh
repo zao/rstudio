@@ -100,6 +100,8 @@ if [ -n "${DOCKER_GITHUB_LOGIN}" ]; then
   BUILD_ARGS+=(--build-arg GITHUB_LOGIN="${DOCKER_GITHUB_LOGIN}")
 fi
 
+BUILD_ARGS+=(--build-arg AWS_REGION="eu-north-1")
+
 # rebuild the image if necessary
 docker build                                \
   --tag "$REPO:$IMAGE_TAG"                  \

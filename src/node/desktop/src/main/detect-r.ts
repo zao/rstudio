@@ -214,7 +214,8 @@ writeLines(sep = "\x1F", c(
   delete envCopy['R_INCLUDE_DIR'];
   delete envCopy['R_RUNTIME'];
   delete envCopy['R_SHARE_DIR'];
-  delete envCopy[kLdLibraryPathVariable];
+  // NOTE(LV): HPC clusters need LD_LIBRARY_PATH for the dependencies needed to launch R and also for extensions
+  // delete envCopy[kLdLibraryPathVariable];
 
   const [result, error] = expect(() => {
     return spawnSync(rExecutable.getAbsolutePath(), ['--vanilla', '-s'], {
